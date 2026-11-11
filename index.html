@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KontoMate: all your money in one place, read-only</title>
+  <meta name="description" content="KontoMate shows your bank accounts, brokers, crypto, gold and cash in one dashboard, with budgets, goals and an AI assistant. Read-only: it can never move your money." />
+  <meta name="theme-color" content="#f5f5f5" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://kontomate.com/" />
+  <meta property="og:title" content="KontoMate: see everything, move nothing" />
+  <meta property="og:description" content="Banks, brokers, crypto, gold and cash in one read-only dashboard, with budgets, goals and an AI assistant." />
+  <meta property="og:url" content="https://kontomate.com/" />
+  <meta property="og:type" content="website" />
+  <!-- No trackers, no cookies, no third-party requests: everything below is served from this site. -->
+  <script src="assets/theme-init.js"></script>
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <!-- Lucide icons (ISC licence), drawn once and reused with <use>. -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-bank" viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-bitcoin" viewBox="0 0 24 24"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="KontoMate home">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#fcd535"/><path d="M17 13H27V51H17Z" fill="#181a20"/><path d="M27 33 47.5 51H35.5L27 43.5Z" fill="#181a20"/><path d="M22.3 35.6 37.1 18.9 33.8 16.1 47 13 45.8 26.5 42.5 23.7 27.7 40.4Z" fill="#181a20"/></svg>
+        <span>KontoMate</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#tracks" data-i18n="nav.features">Features</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <label class="lang" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
+          <span class="sr-only" data-i18n="nav.language">Language</span>
+          <select id="lang-select"></select>
+        </label>
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch between light and dark" data-i18n-attr="aria-label:nav.theme">
+          <svg class="icon show-light" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon show-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="link-login" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
+        <a class="btn btn-small btn-outline" href="https://app.kontomate.com/auth/signup" data-i18n="nav.signup">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero: the one bold element is the net-worth card next to the headline. -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 data-i18n="hero.title">See everything. Move nothing.</h1>
+          <p class="lead" data-i18n="hero.lead">KontoMate puts your bank accounts, brokers, crypto, gold and cash on one screen, with budgets, goals and an AI assistant that knows your numbers. It can only read: it never moves your money.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-i18n="cta.demo">Try the demo</span>
+            </a>
+            <a class="btn btn-outline btn-large" href="https://app.kontomate.com/auth/signup" data-i18n="cta.signup">Create a free account</a>
+          </div>
+          <p class="hint" data-i18n="cta.demoNote">The demo needs no sign-up and saves nothing. Your data stays in your browser tab.</p>
+        </div>
+
+        <figure class="mock" aria-labelledby="mock-caption">
+          <div class="mock-card">
+            <div class="mock-head">
+              <span class="muted small" data-i18n="mock.label">Net worth</span>
+              <span class="pill pill-up">+3.5%</span>
+            </div>
+            <p class="mock-total stat">€26,554.05</p>
+            <svg class="mock-chart" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
+              <path class="area" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S305 32 320 30 L320 110 L0 110Z"/>
+              <path class="line" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S305 32 320 30"/>
+            </svg>
+            <ul class="mock-split">
+              <li><span class="dot d1"></span><span data-i18n="mock.cash">Cash</span><span class="stat">€11,885.75</span></li>
+              <li><span class="dot d2"></span><span data-i18n="mock.investments">Investments</span><span class="stat">€14,668.30</span></li>
+            </ul>
+          </div>
+          <div class="mock-chat">
+            <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+            <p data-i18n="mock.chat">How much did I spend on food this month?</p>
+          </div>
+          <figcaption id="mock-caption" class="muted small" data-i18n="mock.caption">Sample figures from the demo account.</figcaption>
+        </figure>
+      </div>
+
+      <div class="wrap">
+        <ul class="trust">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="trust.readonly">Read-only, always</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="trust.encrypted">Keys stored encrypted</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trust.2fa">Two-factor login and new-device alerts</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="trust.languages">In 8 languages, amounts in euros</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tracks" class="section">
+      <div class="wrap">
+        <h2 data-i18n="tracks.title">Everything you own, in one view</h2>
+        <p class="section-lead" data-i18n="tracks.lead">Connect what can be connected, add the rest by hand or from a photo of the paperwork. Prices update through the day.</p>
+        <ul class="tiles">
+          <li class="tile">
+            <span class="icon-tile t1"><svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg></span>
+            <h3 data-i18n="tracks.banks.title">Bank accounts</h3>
+            <p data-i18n="tracks.banks.text">Balances and transactions through Enable Banking, a licensed PSD2 provider. You log in at your bank, never with us. Or import statements.</p>
+          </li>
+          <li class="tile">
+            <span class="icon-tile t2"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
+            <h3 data-i18n="tracks.stocks.title">Stocks and ETFs</h3>
+            <p data-i18n="tracks.stocks.text">Trading 212, Interactive Brokers and eToro with a read-only key, plus anything you add yourself.</p>
+          </li>
+          <li class="tile">
+            <span class="icon-tile t3"><svg class="icon" aria-hidden="true"><use href="#i-bitcoin"/></svg></span>
+            <h3 data-i18n="tracks.crypto.title">Crypto</h3>
+            <p data-i18n="tracks.crypto.text">Binance, Kraken, Coinbase and Bybit. A key that could trade or withdraw is refused.</p>
+          </li>
+          <li class="tile">
+            <span class="icon-tile t4"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg></span>
+            <h3 data-i18n="tracks.gold.title">Gold and silver</h3>
+            <p data-i18n="tracks.gold.text">Bars and coins by the gram, valued at today's price. Read your dealer's order PDFs to log each purchase.</p>
+          </li>
+          <li class="tile">
+            <span class="icon-tile t5"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span>
+            <h3 data-i18n="tracks.cash.title">Cash</h3>
+            <p data-i18n="tracks.cash.text">The money in your wallet or a drawer counts too.</p>
+          </li>
+          <li class="tile">
+            <span class="icon-tile t6"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span>
+            <h3 data-i18n="tracks.property.title">Home and car</h3>
+            <p data-i18n="tracks.property.text">Costs per home or car month by month, rent you receive, and reminders for insurance and inspections.</p>
+          </li>
+        </ul>
+
+        <div class="tools">
+          <h3 class="tools-title" data-i18n="tools.title">And what you do with it</h3>
+          <ul class="tool-list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-pie"/></svg><div><strong data-i18n="tools.budget.title">Budget and plan</strong><p data-i18n="tools.budget.text">Spending sorted into categories for you, against a monthly budget and an income and expense plan.</p></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-target"/></svg><div><strong data-i18n="tools.goals.title">Goals and recurring investments</strong><p data-i18n="tools.goals.text">Save towards a target, or tick off a fixed amount (or 1 g of gold) each month.</p></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-repeat"/></svg><div><strong data-i18n="tools.subs.title">Subscriptions found for you</strong><p data-i18n="tools.subs.text">Repeating payments are spotted in your transactions, so nothing renews unnoticed.</p></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><div><strong data-i18n="tools.assistant.title">An assistant that knows your numbers</strong><p data-i18n="tools.assistant.text">Ask in words or with a photo. It explains facts and trends; it never tells you what to buy or sell.</p></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><div><strong data-i18n="tools.import.title">Import from a photo or PDF</strong><p data-i18n="tools.import.text">Statements, receipts and invoices are read for you; you check every row before anything is saved.</p></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><div><strong data-i18n="tools.alerts.title">Alerts and a monthly report</strong><p data-i18n="tools.alerts.text">Price and budget alerts, date reminders, and a short report on your month.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- The read-only promise: the owner's decision of 28.10.2026, "tracking only, forever". -->
+    <section id="read-only" class="section promise">
+      <div class="wrap promise-grid">
+        <div>
+          <h2 data-i18n="promise.title">It can look. It can't touch.</h2>
+          <p class="section-lead" data-i18n="promise.lead">KontoMate is for tracking only, and it will stay that way. There is no button anywhere to buy, sell, pay or transfer.</p>
+        </div>
+        <ul class="promise-list">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg>
+            <div><strong data-i18n="promise.bank.title">Your bank login stays at your bank</strong><p data-i18n="promise.bank.text">You approve read access on your bank's own page. It lasts up to 180 days and you can end it any time.</p></div>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <div><strong data-i18n="promise.keys.title">Read-only keys, checked</strong><p data-i18n="promise.keys.text">Every exchange or broker key is tested first. A key that can trade or withdraw is refused, where the platform lets us check.</p></div>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>
+            <div><strong data-i18n="promise.data.title">Your data, under your control</strong><p data-i18n="promise.data.text">Keys and 2FA secrets are encrypted. Hide all amounts with one tap, download everything, or delete your account for good.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="wrap">
+        <h2 data-i18n="how.title">Up and running in three steps</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-no" aria-hidden="true">1</span>
+            <h3 data-i18n="how.s1.title">Create your account</h3>
+            <p data-i18n="how.s1.text">An e-mail and a password. Every new account gets 14 days of Pro, no card needed.</p>
+          </li>
+          <li>
+            <span class="step-no" aria-hidden="true">2</span>
+            <h3 data-i18n="how.s2.title">Connect or import</h3>
+            <p data-i18n="how.s2.text">Link a bank, add a read-only key from your broker or exchange, or upload a statement.</p>
+          </li>
+          <li>
+            <span class="step-no" aria-hidden="true">3</span>
+            <h3 data-i18n="how.s3.title">See where you stand</h3>
+            <p data-i18n="how.s3.text">Your net worth, spending and goals update on their own. Ask the assistant when you want the detail.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <div class="wrap">
+        <div class="demo-band">
+          <div>
+            <h2 data-i18n="demo.title">Try it before you sign up</h2>
+            <p data-i18n="demo.text">The demo is the real app with made-up data, running in your browser. No account, no e-mail, nothing is saved: close the tab and it's gone.</p>
+          </div>
+          <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
+            <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+            <span data-i18n="cta.demo">Try the demo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="wrap">
+        <h2 data-i18n="pricing.title">Simple pricing</h2>
+        <p class="section-lead" data-i18n="pricing.lead">Start with 14 days of Pro, no card. Afterwards keep Free, or stay on Pro.</p>
+        <div class="plans">
+          <article class="plan">
+            <h3 data-i18n="pricing.free.name">Free</h3>
+            <p class="price"><span class="stat">€0</span></p>
+            <p class="muted small" data-i18n="pricing.free.note">For one bank and one platform.</p>
+            <ul class="features">
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.dashboard">Dashboard, budget and income and expense plan</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.oneEach">1 bank and 1 platform</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.goals3">Up to 3 goals, detected subscriptions</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.manual">Gold, cash and other assets by hand</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.aiSmall">A small monthly amount of AI</span></li>
+              <li><svg class="icon no" aria-hidden="true"><use href="#i-x"/></svg><span class="muted" data-i18n="pricing.f.noCarHome">Home and car</span></li>
+              <li><svg class="icon no" aria-hidden="true"><use href="#i-x"/></svg><span class="muted" data-i18n="pricing.f.noReport">Monthly report and e-mail alerts</span></li>
+            </ul>
+            <a class="btn btn-outline" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.free.cta">Start free</a>
+          </article>
+
+          <article class="plan plan-pro">
+            <div class="plan-head">
+              <h3 data-i18n="pricing.pro.name">Pro</h3>
+              <span class="badge" data-i18n="pricing.pro.badge">14 days free</span>
+            </div>
+            <p class="price"><span class="stat">€8</span> <span class="muted" data-i18n="pricing.pro.month">a month</span></p>
+            <p class="muted small" data-i18n="pricing.pro.year">or €80 a year: two months free, about €1.54 a week</p>
+            <ul class="features">
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.everything">Everything in Free</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.unlimited">Unlimited banks, platforms and goals</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.assistant">AI assistant: 100 messages a month</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.import">Import statements, receipts and invoices</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.carHome">Home and car</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.report">Monthly report and e-mail alerts</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.support">Help from the support assistant and the team</span></li>
+            </ul>
+            <a class="btn btn-primary" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.pro.cta">Start 14 days of Pro</a>
+          </article>
+        </div>
+        <p class="note" data-i18n="pricing.soon">Payments open soon. Until then your trial simply ends on Free, and nothing is charged.</p>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="wrap faq-wrap">
+        <h2 data-i18n="faq.title">Questions</h2>
+        <div class="faq">
+          <details>
+            <summary data-i18n="faq.move.q">Can KontoMate move my money?</summary>
+            <p data-i18n="faq.move.a">No. It only reads balances, transactions and holdings. It has no way to pay, transfer, buy or sell, and keys that could do so are refused.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.free.q">Is it free?</summary>
+            <p data-i18n="faq.free.a">Yes, the Free plan stays free. Pro costs €8 a month or €80 a year, and every account starts with 14 days of Pro without a card.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.secure.q">Is it secure?</summary>
+            <p data-i18n="faq.secure.a">Your bank login happens at your bank. Platform keys and 2FA secrets are stored encrypted. You can turn on two-factor login, you are logged out after 15 minutes without activity, and a login from a new browser sends you an alert.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.which.q">Which banks and platforms work?</summary>
+            <p data-i18n="faq.which.a">Banks connect through Enable Banking (PSD2); while bank connections are opening, you can import statements instead. Platforms: Binance, Trading 212, Interactive Brokers, Kraken, Coinbase, Bybit and eToro. Anything else you can add by hand.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.advice.q">Does it tell me what to invest in?</summary>
+            <p data-i18n="faq.advice.a">No. KontoMate shows facts and trends about your own money. It is not investment advice and never recommends buying or selling anything.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.delete.q">Can I take my data out, or delete it?</summary>
+            <p data-i18n="faq.delete.a">Yes. Download everything as a file, delete all financial data, or delete the account completely from Settings.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.demo.q">What happens in the demo?</summary>
+            <p data-i18n="faq.demo.a">You use the real app with sample data. It runs entirely in your browser: nothing you type is sent to us, and it is gone when you reload.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="wrap closing-inner">
+        <h2 data-i18n="closing.title">Know where your money is. All of it.</h2>
+        <div class="hero-ctas">
+          <a class="btn btn-primary btn-large" href="https://app.kontomate.com/auth/signup" data-i18n="cta.signup">Create a free account</a>
+          <a class="btn btn-outline btn-large" href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="KontoMate home">
+          <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#fcd535"/><path d="M17 13H27V51H17Z" fill="#181a20"/><path d="M27 33 47.5 51H35.5L27 43.5Z" fill="#181a20"/><path d="M22.3 35.6 37.1 18.9 33.8 16.1 47 13 45.8 26.5 42.5 23.7 27.7 40.4Z" fill="#181a20"/></svg>
+          <span>KontoMate</span>
+        </a>
+        <p class="muted small" data-i18n="footer.tagline">Personal finance tracking. Read-only, no ads, no trackers.</p>
+        <p class="muted small" data-i18n="footer.advice">KontoMate is not a bank, broker or investment adviser. Nothing on this site or in the app is investment advice.</p>
+      </div>
+      <nav aria-label="Product" class="footer-col">
+        <h2 class="footer-h" data-i18n="footer.product">Product</h2>
+        <a href="#tracks" data-i18n="nav.features">Features</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
+        <a href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
+      </nav>
+      <!-- Placeholders until the lawyer approves the texts (finassist-app docs/legal/). -->
+      <nav aria-label="Legal" class="footer-col">
+        <h2 class="footer-h" data-i18n="footer.legal">Legal</h2>
+        <a href="/legal/#terms" data-i18n="legal.terms">Terms of service</a>
+        <a href="/legal/#privacy" data-i18n="legal.privacy">Privacy policy</a>
+        <a href="/legal/#storage" data-i18n="legal.storage">Cookies and storage</a>
+        <a href="/legal/#notice" data-i18n="legal.notice">Legal notice</a>
+        <a href="/legal/#advice" data-i18n="legal.advice">Not investment advice</a>
+        <a href="/legal/#ai" data-i18n="legal.ai">AI notice</a>
+        <a href="/legal/#complaints" data-i18n="legal.complaints">Complaints</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <p class="muted small"><span data-i18n="footer.copy">© 2026 KontoMate. Made by HadesFlow.</span></p>
+      <p class="muted small" data-i18n="footer.cookies">This site sets no cookies. It only remembers your theme and language in your browser.</p>
+    </div>
+  </footer>
+
+  <script src="assets/i18n.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

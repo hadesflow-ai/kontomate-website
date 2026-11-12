@@ -1,4 +1,5 @@
 # Cloudflare Pages response headers. No third-party origins at all: no fonts, analytics or trackers.
+# The same list is in functions/_middleware.js (for "/" and "/api/*", which pass through a Function): change both.
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'
   X-Frame-Options: DENY

@@ -129,6 +129,8 @@ KM_I18N.strings.fr = {
   "footer.tagline": "Suivi de vos finances personnelles. Lecture seule, sans publicité, sans traceurs.",
   "footer.advice": "KontoMate n’est ni une banque, ni un courtier, ni un conseiller en investissement. Rien sur ce site ni dans l’app ne constitue un conseil en investissement.",
   "footer.product": "Produit",
+  "footer.contact": "Contact",
+  "footer.privacyContact": "Questions sur la confidentialité",
   "footer.legal": "Mentions légales",
   "footer.copy": "© 2026 KontoMate.",
   "footer.madeBy": "Conçu par",

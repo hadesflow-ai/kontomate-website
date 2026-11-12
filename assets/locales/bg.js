@@ -129,6 +129,8 @@ KM_I18N.strings.bg = {
   "footer.tagline": "Проследяване на личните финанси. Само за четене, без реклами, без тракери.",
   "footer.advice": "KontoMate не е банка, брокер или инвестиционен консултант. Нищо на този сайт или в приложението не е инвестиционен съвет.",
   "footer.product": "Продукт",
+  "footer.contact": "Контакт",
+  "footer.privacyContact": "Въпроси за поверителността",
   "footer.legal": "Правна информация",
   "footer.copy": "© 2026 KontoMate.",
   "footer.madeBy": "Създадено от",

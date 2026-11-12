@@ -16,6 +16,6 @@ window.KM_I18N = {
     { code: "pl", label: "Polski" },
     { code: "ro", label: "Română" },
   ],
-  READY: ["en"],
+  READY: ["en", "bg", "de", "es", "fr", "it", "pl", "ro"],
   strings: {},
 };

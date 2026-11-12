@@ -20,6 +20,49 @@
     });
   }
 
+  // Waitlist (Soon mode). Posts JSON to /api/waitlist; without JavaScript the form posts itself and the
+  // function redirects back to /?waitlist=<result>#waitlist, which is shown here too.
+  var form = document.getElementById("waitlist-form");
+  if (form) {
+    var status = document.getElementById("waitlist-status");
+    var email = form.elements.namedItem("email");
+    var consent = form.elements.namedItem("consent");
+    var button = form.querySelector('button[type="submit"]');
+    var show = function (code) {
+      var ok = code === "ok";
+      var id = { ok: "msg-ok", invalid: "msg-invalid", consent: "msg-consent" }[code] || "msg-error";
+      var msg = document.getElementById(id);
+      status.textContent = msg ? msg.textContent : "";
+      status.className = "waitlist-status " + (ok ? "ok" : "err");
+      email.setAttribute("aria-invalid", code === "invalid" ? "true" : "false");
+      if (ok) { form.reset(); }
+    };
+    var result = new URLSearchParams(location.search).get("waitlist");
+    if (result) show(result);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var value = email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) { show("invalid"); email.focus(); return; }
+      if (!consent.checked) { show("consent"); consent.focus(); return; }
+      button.disabled = true;
+      fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: value,
+          consent: true,
+          lang: root.getAttribute("lang") || "en",
+          website: form.elements.namedItem("website").value,
+        }),
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (d) { show(d.result || "error"); })
+        .catch(function () { show("error"); })
+        .then(function () { button.disabled = false; });
+    });
+  }
+
   // Languages (assets/i18n.js). English is the HTML; other languages replace the data-i18n texts.
   var I18N = window.KM_I18N;
   if (!I18N) return;

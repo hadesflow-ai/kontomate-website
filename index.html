@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- data-mode: "soon" (waitlist, no sign-up) is the default in the file; functions/_middleware.js switches it
+     to "live" when the Cloudflare Pages variable SITE_MODE is "live". Elements: .soon-only / .live-only. -->
+<html lang="en" data-mode="soon">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KontoMate: all your money in one place, read-only</title>
+  <title>KontoMate: the complete wealth app for everything you own</title>
   <meta name="description" content="KontoMate shows your bank accounts, brokers, crypto, gold and cash in one dashboard, with budgets, goals and an AI assistant. Read-only: it can never move your money." />
   <meta name="theme-color" content="#f5f5f5" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -66,8 +68,9 @@
           <svg class="icon show-light" aria-hidden="true"><use href="#i-moon"/></svg>
           <svg class="icon show-dark" aria-hidden="true"><use href="#i-sun"/></svg>
         </button>
-        <a class="link-login" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
-        <a class="btn btn-small btn-outline" href="https://app.kontomate.com/auth/signup" data-i18n="nav.signup">Sign up</a>
+        <a class="link-login live-only" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
+        <a class="btn btn-small btn-outline live-only" href="https://app.kontomate.com/auth/signup" data-i18n="nav.signup">Sign up</a>
+        <a class="btn btn-small btn-primary soon-only" href="https://demo.kontomate.com" data-i18n="nav.demo">Demo</a>
       </div>
     </div>
   </header>
@@ -77,6 +80,10 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
+          <p class="eyebrow">
+            <span data-i18n="hero.eyebrow">The complete wealth app</span>
+            <span class="badge soon-only" data-i18n="soon.badge">Opening soon</span>
+          </p>
           <h1 data-i18n="hero.title">See everything. Move nothing.</h1>
           <p class="lead" data-i18n="hero.lead">KontoMate puts your bank accounts, brokers, crypto, gold and cash on one screen, with budgets, goals and an AI assistant that knows your numbers. It can only read: it never moves your money.</p>
           <div class="hero-ctas">
@@ -84,7 +91,8 @@
               <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
               <span data-i18n="cta.demo">Try the demo</span>
             </a>
-            <a class="btn btn-outline btn-large" href="https://app.kontomate.com/auth/signup" data-i18n="cta.signup">Create a free account</a>
+            <a class="btn btn-outline btn-large live-only" href="https://app.kontomate.com/auth/signup" data-i18n="cta.signup">Create a free account</a>
+            <a class="btn btn-outline btn-large soon-only" href="#waitlist" data-i18n="cta.notify">Get notified at launch</a>
           </div>
           <p class="hint" data-i18n="cta.demoNote">The demo needs no sign-up and saves nothing. Your data stays in your browser tab.</p>
         </div>
@@ -126,12 +134,12 @@
     <section id="tracks" class="section">
       <div class="wrap">
         <h2 data-i18n="tracks.title">Everything you own, in one view</h2>
-        <p class="section-lead" data-i18n="tracks.lead">Connect what can be connected, add the rest by hand or from a photo of the paperwork. Prices update through the day.</p>
+        <p class="section-lead" data-i18n="tracks.lead">Connect brokers and exchanges with a read-only key, import your bank statements, and add the rest by hand or from a photo of the paperwork. Prices update through the day.</p>
         <ul class="tiles">
           <li class="tile">
             <span class="icon-tile t1"><svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg></span>
             <h3 data-i18n="tracks.banks.title">Bank accounts</h3>
-            <p data-i18n="tracks.banks.text">Balances and transactions through Enable Banking, a licensed PSD2 provider. You log in at your bank, never with us. Or import statements.</p>
+            <p data-i18n="tracks.banks.text">Import a statement as a file, a PDF or a photo. Transactions are read for you, and you check every row before anything is saved.</p>
           </li>
           <li class="tile">
             <span class="icon-tile t2"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
@@ -184,7 +192,7 @@
         <ul class="promise-list">
           <li>
             <svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg>
-            <div><strong data-i18n="promise.bank.title">Your bank login stays at your bank</strong><p data-i18n="promise.bank.text">You approve read access on your bank's own page. It lasts up to 180 days and you can end it any time.</p></div>
+            <div><strong data-i18n="promise.bank.title">We never ask for your bank login</strong><p data-i18n="promise.bank.text">Bank accounts come in from the statements you import. No bank password, no connection to your bank, nothing that could reach your account.</p></div>
           </li>
           <li>
             <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
@@ -210,7 +218,7 @@
           <li>
             <span class="step-no" aria-hidden="true">2</span>
             <h3 data-i18n="how.s2.title">Connect or import</h3>
-            <p data-i18n="how.s2.text">Link a bank, add a read-only key from your broker or exchange, or upload a statement.</p>
+            <p data-i18n="how.s2.text">Add a read-only key from your broker or exchange, and upload your bank statements.</p>
           </li>
           <li>
             <span class="step-no" aria-hidden="true">3</span>
@@ -237,24 +245,25 @@
     </section>
 
     <section id="pricing" class="section">
-      <div class="wrap">
+      <div class="wrap section-center">
         <h2 data-i18n="pricing.title">Simple pricing</h2>
         <p class="section-lead" data-i18n="pricing.lead">Start with 14 days of Pro, no card. Afterwards keep Free, or stay on Pro.</p>
         <div class="plans">
           <article class="plan">
             <h3 data-i18n="pricing.free.name">Free</h3>
             <p class="price"><span class="stat">€0</span></p>
-            <p class="muted small" data-i18n="pricing.free.note">For one bank and one platform.</p>
+            <p class="muted small" data-i18n="pricing.free.note">To get started, with one connected platform.</p>
             <ul class="features">
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.dashboard">Dashboard, budget and income and expense plan</span></li>
-              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.oneEach">1 bank and 1 platform</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.oneEach">1 connected platform, bank statements by import</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.goals3">Up to 3 goals, detected subscriptions</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.manual">Gold, cash and other assets by hand</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.aiSmall">A small monthly amount of AI</span></li>
               <li><svg class="icon no" aria-hidden="true"><use href="#i-x"/></svg><span class="muted" data-i18n="pricing.f.noCarHome">Home and car</span></li>
               <li><svg class="icon no" aria-hidden="true"><use href="#i-x"/></svg><span class="muted" data-i18n="pricing.f.noReport">Monthly report and e-mail alerts</span></li>
             </ul>
-            <a class="btn btn-outline" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.free.cta">Start free</a>
+            <a class="btn btn-outline live-only" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.free.cta">Start free</a>
+            <a class="btn btn-outline soon-only" href="#waitlist" data-i18n="cta.notifyShort">Get notified</a>
           </article>
 
           <article class="plan plan-pro">
@@ -266,17 +275,18 @@
             <p class="muted small" data-i18n="pricing.pro.year">or €80 a year: two months free, about €1.54 a week</p>
             <ul class="features">
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.everything">Everything in Free</span></li>
-              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.unlimited">Unlimited banks, platforms and goals</span></li>
+              <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.unlimited">Unlimited platforms and goals</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.assistant">AI assistant: 100 messages a month</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.import">Import statements, receipts and invoices</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.carHome">Home and car</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.report">Monthly report and e-mail alerts</span></li>
               <li><svg class="icon yes" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.f.support">Help from the support assistant and the team</span></li>
             </ul>
-            <a class="btn btn-primary" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.pro.cta">Start 14 days of Pro</a>
+            <a class="btn btn-primary live-only" href="https://app.kontomate.com/auth/signup" data-i18n="pricing.pro.cta">Start 14 days of Pro</a>
+            <a class="btn btn-primary soon-only" href="https://demo.kontomate.com" data-i18n="pricing.pro.demo">See Pro in the demo</a>
           </article>
         </div>
-        <p class="note" data-i18n="pricing.soon">Payments open soon. Until then your trial simply ends on Free, and nothing is charged.</p>
+        <p class="note soon-only" data-i18n="pricing.launch">Launch prices. Sign-up opens soon: leave your e-mail below and we'll tell you when.</p>
       </div>
     </section>
 
@@ -284,6 +294,10 @@
       <div class="wrap faq-wrap">
         <h2 data-i18n="faq.title">Questions</h2>
         <div class="faq">
+          <details class="soon-only">
+            <summary data-i18n="faq.when.q">When can I sign up?</summary>
+            <p data-i18n="faq.when.a">KontoMate opens soon. Leave your e-mail and we'll write to you once, when sign-up opens. Until then, the demo shows the whole app.</p>
+          </details>
           <details>
             <summary data-i18n="faq.move.q">Can KontoMate move my money?</summary>
             <p data-i18n="faq.move.a">No. It only reads balances, transactions and holdings. It has no way to pay, transfer, buy or sell, and keys that could do so are refused.</p>
@@ -294,11 +308,11 @@
           </details>
           <details>
             <summary data-i18n="faq.secure.q">Is it secure?</summary>
-            <p data-i18n="faq.secure.a">Your bank login happens at your bank. Platform keys and 2FA secrets are stored encrypted. You can turn on two-factor login, you are logged out after 15 minutes without activity, and a login from a new browser sends you an alert.</p>
+            <p data-i18n="faq.secure.a">We never ask for your bank login: bank data comes from the statements you import. Platform keys and 2FA secrets are stored encrypted. You can turn on two-factor login, you are logged out after 15 minutes without activity, and a login from a new browser sends you an alert.</p>
           </details>
           <details>
             <summary data-i18n="faq.which.q">Which banks and platforms work?</summary>
-            <p data-i18n="faq.which.a">Banks connect through Enable Banking (PSD2); while bank connections are opening, you can import statements instead. Platforms: Binance, Trading 212, Interactive Brokers, Kraken, Coinbase, Bybit and eToro. Anything else you can add by hand.</p>
+            <p data-i18n="faq.which.a">Any bank: import its statement as a file, a PDF or a photo. Platforms with a read-only key: Binance, Trading 212, Interactive Brokers, Kraken, Coinbase, Bybit and eToro. Anything else you can add by hand.</p>
           </details>
           <details>
             <summary data-i18n="faq.advice.q">Does it tell me what to invest in?</summary>
@@ -316,12 +330,47 @@
       </div>
     </section>
 
-    <section class="section closing">
+    <section id="waitlist" class="section closing">
       <div class="wrap closing-inner">
         <h2 data-i18n="closing.title">Know where your money is. All of it.</h2>
-        <div class="hero-ctas">
+        <div class="hero-ctas live-only">
           <a class="btn btn-primary btn-large" href="https://app.kontomate.com/auth/signup" data-i18n="cta.signup">Create a free account</a>
           <a class="btn btn-outline btn-large" href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
+        </div>
+
+        <!-- Waitlist (Soon mode): posts to functions/api/waitlist.js. Without JavaScript the browser posts the
+             form and comes back to /?waitlist=<result>#waitlist. -->
+        <div class="soon-only">
+          <p class="section-lead" data-i18n="waitlist.lead">KontoMate opens soon. Try the demo now, and leave your e-mail to hear the day sign-up opens.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-i18n="cta.demo">Try the demo</span>
+            </a>
+          </div>
+          <form class="waitlist" id="waitlist-form" action="/api/waitlist" method="post" novalidate>
+            <label class="sr-only" for="waitlist-email" data-i18n="waitlist.label">Your e-mail</label>
+            <div class="waitlist-row">
+              <input id="waitlist-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com" data-i18n-attr="placeholder:waitlist.placeholder" />
+              <button class="btn btn-outline btn-large" type="submit" data-i18n="waitlist.submit">Notify me</button>
+            </div>
+            <label class="waitlist-consent">
+              <input type="checkbox" name="consent" value="yes" required />
+              <span data-i18n="waitlist.consent">E-mail me once when sign-up opens. Nothing else, and my address is deleted after that.</span>
+            </label>
+            <p class="small muted"><a href="/legal/#waitlist" data-i18n="waitlist.privacy">How we handle your e-mail</a></p>
+            <input type="hidden" name="lang" value="en" />
+            <!-- Honeypot: people never see or fill it; bots usually do. -->
+            <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+            <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+          </form>
+          <!-- Messages the script shows; translated like any other text. -->
+          <div hidden>
+            <span id="msg-ok" data-i18n="waitlist.ok">Thank you. You're on the list: we'll e-mail you when KontoMate opens.</span>
+            <span id="msg-invalid" data-i18n="waitlist.invalid">Please enter a valid e-mail address.</span>
+            <span id="msg-consent" data-i18n="waitlist.needConsent">Please tick the box so we may e-mail you.</span>
+            <span id="msg-error" data-i18n="waitlist.error">Something went wrong. Please try again in a moment.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -342,7 +391,8 @@
         <a href="#tracks" data-i18n="nav.features">Features</a>
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
         <a href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
-        <a href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
+        <a class="live-only" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
+        <a class="soon-only" href="#waitlist" data-i18n="cta.notifyShort">Get notified</a>
       </nav>
       <!-- Placeholders until the lawyer approves the texts (finassist-app docs/legal/). -->
       <nav aria-label="Legal" class="footer-col">
@@ -357,7 +407,7 @@
       </nav>
     </div>
     <div class="wrap footer-bottom">
-      <p class="muted small"><span data-i18n="footer.copy">© 2026 KontoMate. Made by HadesFlow.</span></p>
+      <p class="muted small"><span data-i18n="footer.copy">© 2026 KontoMate.</span> <span data-i18n="footer.madeBy">Made by</span> <a class="footer-link" href="https://hadesflow.com" rel="noopener">HadesFlow</a></p>
       <p class="muted small" data-i18n="footer.cookies">This site sets no cookies. It only remembers your theme and language in your browser.</p>
     </div>
   </footer>

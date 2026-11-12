@@ -42,7 +42,8 @@
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-globe"viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
   </svg>
 
   <a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
@@ -59,11 +60,15 @@
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <label class="lang" hidden>
-          <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
-          <span class="sr-only" data-i18n="nav.language">Language</span>
-          <select id="lang-select"></select>
-        </label>
+        <!-- Language picker, built like the app's (finassist-app src/components/LanguageSelect.tsx); assets/site.js fills it. -->
+        <div class="lang" hidden>
+          <button type="button" class="lang-trigger" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-menu" aria-label="Language" data-i18n-attr="aria-label:nav.language">
+            <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
+            <span class="lang-current" id="lang-current">English</span>
+            <svg class="icon lang-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </button>
+          <ul class="lang-menu" id="lang-menu" role="listbox" tabindex="-1" hidden></ul>
+        </div>
         <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch between light and dark" data-i18n-attr="aria-label:nav.theme">
           <svg class="icon show-light" aria-hidden="true"><use href="#i-moon"/></svg>
           <svg class="icon show-dark" aria-hidden="true"><use href="#i-sun"/></svg>

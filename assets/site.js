@@ -2,7 +2,9 @@
 // the two choices are kept in localStorage on this device only.
 (function () {
   var root = document.documentElement;
-  var base = document.currentScript ? document.currentScript.src.replace(/[^/]*$/, "") : "assets/";
+  var src = document.currentScript ? document.currentScript.src : "assets/site.js";
+  var base = src.split("?")[0].replace(/[^/]*$/, "");
+  var version = (src.split("?")[1] || ""); // "v=<hash>" from scripts/stamp-assets.mjs, passed on to the language files
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage blocked: the choice lasts this visit */ } },
@@ -91,7 +93,7 @@
   function load(code, done) {
     if (code === "en" || I18N.strings[code]) return done();
     var s = document.createElement("script");
-    s.src = base + "locales/" + code + ".js";
+    s.src = base + "locales/" + code + ".js" + (version ? "?" + version : "");
     s.onload = done;
     s.onerror = function () { apply("en"); };
     document.head.appendChild(s);

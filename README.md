@@ -17,6 +17,7 @@ The app itself lives in the `finassist-app` repository (app.kontomate.com); the 
 | `assets/i18n.js` | Language list and `READY` (languages shown in the switcher). |
 | `assets/locales/<code>.js` | Translations for bg, de, es, fr, it, pl, ro (same languages as the app). |
 | `scripts/check-i18n.mjs` | Translation check. |
+| `scripts/stamp-assets.mjs` | Adds `?v=<hash>` to every `assets/` link, so changed CSS/JS reach visitors at once (Cloudflare caches `/assets/*` for hours). **Run it after every change in `assets/`**; `--check` fails if a page is stale. |
 | `functions/_middleware.js` | Soon / Live switch from the `SITE_MODE` variable (see below). |
 | `functions/api/waitlist.js` | `POST /api/waitlist`: keeps an e-mail in Workers KV for the launch notice. |
 | `_routes.json` | Runs the Functions only for `/` and `/api/*`; everything else is plain static files. |

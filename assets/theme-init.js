@@ -6,5 +6,5 @@
   var dark = pref === "dark" || (pref !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.classList.toggle("dark", dark);
   var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", dark ? "#181a20" : "#f5f5f5");
+  if (meta) meta.setAttribute("content", dark ? "#0f1115" : "#f5f5f2");
 })();

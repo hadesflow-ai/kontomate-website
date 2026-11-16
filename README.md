@@ -96,7 +96,7 @@ When the page grows, consider one pre-rendered page per language (`/bg/`, `/de/`
 - Say "wealth app" or "wealth tracker", not "wealth management": KontoMate is not a regulated adviser or manager.
 - Not investment advice: describe facts and features, never recommend assets.
 - Prices and plan contents must match the app (`finassist-app` `api.plan_limits()` and Settings → Plan). Payments are not open yet.
-- No trackers, analytics, font CDNs or embeds. If analytics are ever wanted, use a cookieless one and update the CSP, the footer line and the legal texts together.
+- No trackers, analytics, font CDNs or embeds. IBM Plex Sans and Mono are self-hosted in `assets/fonts/` (SIL OFL, from @fontsource 5.3.0; Latin, Latin Extended and Cyrillic). If analytics are ever wanted, use a cookieless one and update the CSP, the footer line and the legal texts together.
 
 ## Deploying (owner's steps)
 

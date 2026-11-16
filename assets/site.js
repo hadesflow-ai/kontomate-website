@@ -18,7 +18,7 @@
       root.classList.toggle("dark", dark);
       store.set("kontomate-theme", dark ? "dark" : "light");
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", dark ? "#181a20" : "#f5f5f5");
+      if (meta) meta.setAttribute("content", dark ? "#0f1115" : "#f5f5f2");
     });
   }
 
@@ -185,5 +185,51 @@
 
     mark();
     trigger.closest(".lang").hidden = false;
+  }
+  // Header: paper, blur and a hairline once the page scrolls under it. Scroll-spy: the nav link of the section
+  // that crosses the middle of the screen is underlined (none between those sections).
+  var header = document.querySelector(".site-header");
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var ticking = false;
+  var onScroll = function () {
+    ticking = false;
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
+    var mid = window.innerHeight / 2;
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute("href"));
+      var r = el ? el.getBoundingClientRect() : null;
+      a.classList.toggle("is-current", !!r && r.top <= mid && r.bottom > mid);
+    });
+  };
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window) {
+
+    // Reveal: a short fade-up as blocks enter. Content stays visible without JavaScript or with reduced motion,
+    // and anything already on screen is shown at once.
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var blocks = document.querySelectorAll("[data-reveal]");
+    if (!still && blocks.length) {
+      var groups = new Map();
+      Array.prototype.forEach.call(blocks, function (el) {
+        var n = groups.get(el.parentNode) || 0;
+        el.style.setProperty("--d", Math.min(n, 5) * 40 + "ms");
+        groups.set(el.parentNode, n + 1);
+      });
+      var seen = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("in"); seen.unobserve(en.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      Array.prototype.forEach.call(blocks, function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add("in");
+        else seen.observe(el);
+      });
+      root.classList.add("reveal-ready");
+    }
   }
 })();

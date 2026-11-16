@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KontoMate: the complete wealth app for everything you own</title>
   <meta name="description" content="KontoMate shows your bank accounts, brokers, crypto, gold and cash in one dashboard, with budgets, goals and an AI assistant. Read-only: it can never move your money." />
-  <meta name="theme-color" content="#f5f5f5" />
-  <link rel="icon" href="assets/favicon.svg?v=eae147e542" type="image/svg+xml" />
+  <meta name="theme-color" content="#f5f5f2" />
+  <link rel="icon" href="assets/favicon.svg?v=3ab1132880" type="image/svg+xml" />
   <link rel="canonical" href="https://kontomate.com/" />
   <meta property="og:title" content="KontoMate: the full picture of your money" />
   <meta property="og:description" content="Banks, brokers, crypto, gold and cash in one read-only dashboard, with budgets, goals and an AI assistant." />
   <meta property="og:url" content="https://kontomate.com/" />
   <meta property="og:type" content="website" />
   <!-- No trackers, no cookies, no third-party requests: everything below is served from this site. -->
-  <script src="assets/theme-init.js?v=eae147e542"></script>
-  <link rel="stylesheet" href="assets/site.css?v=eae147e542" />
+  <script src="assets/theme-init.js?v=3ab1132880"></script>
+  <link rel="stylesheet" href="assets/site.css?v=3ab1132880" />
 </head>
 <body>
   <!-- Lucide icons (ISC licence), drawn once and reused with <use>. -->
@@ -43,7 +43,8 @@
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
     <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-    <symbol id="i-globe"viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
   </svg>
 
   <a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
@@ -86,11 +87,12 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">
+            <span class="status soon-only"><span class="status-dot" aria-hidden="true"></span><span data-i18n="soon.badge">Opening soon</span></span>
+            <span class="sep soon-only" aria-hidden="true">·</span>
             <span data-i18n="hero.eyebrow">The complete wealth app</span>
-            <span class="badge soon-only" data-i18n="soon.badge">Opening soon</span>
           </p>
           <h1 data-i18n="hero.title">The full picture of your money.</h1>
-          <p class="lead" data-i18n="hero.lead">Bank accounts, investments, crypto, gold and cash on one screen, with an AI assistant that knows your numbers. Read-only: it never moves your money.</p>
+          <p class="lead" data-i18n="hero.lead">Bank accounts, investments, crypto, gold and cash on one screen. Read-only: it never moves your money.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
               <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
@@ -105,13 +107,18 @@
         <figure class="mock" aria-labelledby="mock-caption">
           <div class="mock-card">
             <div class="mock-head">
-              <span class="muted small" data-i18n="mock.label">Net worth</span>
+              <span class="label" data-i18n="mock.label">Net worth</span>
               <span class="pill pill-up">+3.5%</span>
             </div>
             <p class="mock-total stat">€26,554.05</p>
-            <svg class="mock-chart" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
-              <path class="area" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S305 32 320 30 L320 110 L0 110Z"/>
-              <path class="line" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S305 32 320 30"/>
+            <svg class="mock-chart" viewBox="0 0 320 110" aria-hidden="true" focusable="false">
+              <defs><linearGradient id="mock-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="stop-a"/><stop offset="1" class="stop-b"/></linearGradient></defs>
+              <line class="grid" x1="0" y1="36" x2="320" y2="36"/>
+              <line class="grid" x1="0" y1="72" x2="320" y2="72"/>
+              <line class="grid" x1="0" y1="108" x2="320" y2="108"/>
+              <path class="area" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S300 22 312 20 L312 110 L0 110Z"/>
+              <path class="line" pathLength="1" d="M0 92 C30 88 45 96 70 84 S115 70 140 74 S185 58 210 50 S255 30 280 26 S300 22 312 20"/>
+              <circle class="end" cx="312" cy="20" r="5"/>
             </svg>
             <ul class="mock-split">
               <li><span class="dot d1"></span><span data-i18n="mock.cash">Cash</span><span class="stat">€11,885.75</span></li>
@@ -138,42 +145,44 @@
 
     <section id="tracks" class="section">
       <div class="wrap">
-        <h2 data-i18n="tracks.title">Everything you own, in one view</h2>
-        <p class="section-lead" data-i18n="tracks.lead">Import, connect or add by hand. Prices update through the day.</p>
+        <div class="section-head">
+          <h2 data-i18n="tracks.title">Everything you own, in one view</h2>
+          <p class="section-lead" data-i18n="tracks.lead">Import, connect or add by hand. Prices update through the day.</p>
+        </div>
         <ul class="tiles">
-          <li class="tile">
-            <span class="icon-tile t1"><svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg></span>
             <h3 data-i18n="tracks.banks.title">Bank accounts</h3>
             <p data-i18n="tracks.banks.text">Import statements as a file, PDF or photo.</p>
           </li>
-          <li class="tile">
-            <span class="icon-tile t2"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg></span>
             <h3 data-i18n="tracks.stocks.title">Stocks and ETFs</h3>
             <p data-i18n="tracks.stocks.text">Trading 212, Interactive Brokers, eToro, with a read-only key.</p>
           </li>
-          <li class="tile">
-            <span class="icon-tile t3"><svg class="icon" aria-hidden="true"><use href="#i-bitcoin"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-bitcoin"/></svg></span>
             <h3 data-i18n="tracks.crypto.title">Crypto</h3>
             <p data-i18n="tracks.crypto.text">Binance, Kraken, Coinbase, Bybit. Read-only access only.</p>
           </li>
-          <li class="tile">
-            <span class="icon-tile t4"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg></span>
             <h3 data-i18n="tracks.gold.title">Gold and silver</h3>
             <p data-i18n="tracks.gold.text">By the gram, at today's price.</p>
           </li>
-          <li class="tile">
-            <span class="icon-tile t5"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span>
             <h3 data-i18n="tracks.cash.title">Cash</h3>
             <p data-i18n="tracks.cash.text">Your wallet counts too.</p>
           </li>
-          <li class="tile">
-            <span class="icon-tile t6"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <li class="tile" data-reveal>
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span>
             <h3 data-i18n="tracks.property.title">Home and car</h3>
             <p data-i18n="tracks.property.text">Monthly costs, rent and reminders.</p>
           </li>
         </ul>
 
-        <div class="tools">
+        <div class="tools" data-reveal>
           <h3 class="tools-title" data-i18n="tools.title">And what you do with it</h3>
           <ul class="tool-list">
             <li><svg class="icon" aria-hidden="true"><use href="#i-pie"/></svg><div><strong data-i18n="tools.budget.title">Budget and plan</strong><p data-i18n="tools.budget.text">Spending sorted into categories, against your budget.</p></div></li>
@@ -193,8 +202,16 @@
         <div>
           <h2 data-i18n="promise.title">It can look. It can't touch.</h2>
           <p class="section-lead" data-i18n="promise.lead">There is no button to buy, sell, pay or transfer. There never will be.</p>
+          <div class="keycard" data-reveal>
+            <p class="keycard-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><span class="label" data-i18n="promise.key.label">Your API key</span></p>
+            <ul>
+              <li class="yes"><span data-i18n="promise.key.read">Read</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="sr-only" data-i18n="promise.key.allowed">allowed</span></span></li>
+              <li class="no"><span data-i18n="promise.key.trade">Trade</span><span><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span class="sr-only" data-i18n="promise.key.refused">refused</span></span></li>
+              <li class="no"><span data-i18n="promise.key.withdraw">Withdraw</span><span><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span class="sr-only" data-i18n="promise.key.refused">refused</span></span></li>
+            </ul>
+          </div>
         </div>
-        <ul class="promise-list">
+        <ul class="promise-list" data-reveal>
           <li>
             <svg class="icon" aria-hidden="true"><use href="#i-bank"/></svg>
             <div><strong data-i18n="promise.bank.title">We never ask for your bank login</strong><p data-i18n="promise.bank.text">Bank data comes from the statements you import.</p></div>
@@ -214,15 +231,32 @@
 
     <section id="demo" class="section">
       <div class="wrap">
-        <div class="demo-band">
-          <div>
+        <div class="demo-card" data-reveal>
+          <div class="demo-copy">
             <h2 data-i18n="demo.title">Try it before you sign up</h2>
             <p data-i18n="demo.text">The real app with sample data, in your browser. Nothing is saved.</p>
+            <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-i18n="cta.demo">Try the demo</span>
+            </a>
           </div>
-          <a class="btn btn-primary btn-large" href="https://demo.kontomate.com">
-            <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
-            <span data-i18n="cta.demo">Try the demo</span>
-          </a>
+          <!-- A preview of the demo dashboard (sample figures; they add up to the hero card's total). -->
+          <div class="demo-preview" aria-hidden="true">
+            <div class="app-window">
+              <div class="app-bar"><i></i><i></i><i></i></div>
+              <div class="app-body">
+                <p class="label" data-i18n="mock.label">Net worth</p>
+                <p class="app-total stat">€26,554.05</p>
+                <div class="alloc-bar"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span></div>
+                <ul class="alloc-list">
+                  <li><span class="dot s1"></span><span data-i18n="mock.cash">Cash</span><span class="stat">€11,885.75</span></li>
+                  <li><span class="dot s2"></span><span data-i18n="tracks.stocks.title">Stocks and ETFs</span><span class="stat">€9,420.10</span></li>
+                  <li><span class="dot s3"></span><span data-i18n="tracks.crypto.title">Crypto</span><span class="stat">€3,412.70</span></li>
+                  <li><span class="dot s4"></span><span data-i18n="tracks.gold.title">Gold and silver</span><span class="stat">€1,835.50</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -232,7 +266,7 @@
         <h2 data-i18n="pricing.title">Simple pricing</h2>
         <p class="section-lead" data-i18n="pricing.lead">Every account starts with 14 days of Pro, no card needed.</p>
         <div class="plans">
-          <article class="plan">
+          <article class="plan" data-reveal>
             <h3 data-i18n="pricing.free.name">Free</h3>
             <p class="price"><span class="stat">€0</span></p>
             <p class="muted small" data-i18n="pricing.free.note">To get started, with one connected platform.</p>
@@ -249,7 +283,7 @@
             <a class="btn btn-outline soon-only" href="#waitlist" data-i18n="cta.notifyShort">Get notified</a>
           </article>
 
-          <article class="plan plan-pro">
+          <article class="plan plan-pro" data-reveal>
             <div class="plan-head">
               <h3 data-i18n="pricing.pro.name">Pro</h3>
               <span class="badge" data-i18n="pricing.pro.badge">14 days free</span>
@@ -275,7 +309,10 @@
 
     <section id="faq" class="section">
       <div class="wrap faq-wrap">
-        <h2 data-i18n="faq.title">Questions</h2>
+        <div class="faq-aside">
+          <h2 data-i18n="faq.title">Questions</h2>
+          <p><span data-i18n="faq.more">Still have a question?</span><br /><a href="mailto:support@kontomate.com">support@kontomate.com</a></p>
+        </div>
         <div class="faq">
           <details class="soon-only">
             <summary data-i18n="faq.when.q">When can I sign up?</summary>
@@ -376,8 +413,13 @@
         <a href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
         <a class="live-only" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
         <a class="soon-only" href="#waitlist" data-i18n="cta.notifyShort">Get notified</a>
-        <a href="mailto:support@kontomate.com" data-i18n="footer.contact">Contact</a>
       </nav>
+      <div class="footer-col">
+        <h2 class="footer-h" data-i18n="footer.contact">Contact</h2>
+        <a href="mailto:support@kontomate.com">support@kontomate.com</a>
+        <span class="footer-sub" data-i18n="footer.privacyContact">Privacy questions</span>
+        <a href="mailto:privacy@kontomate.com">privacy@kontomate.com</a>
+      </div>
       <!-- Placeholders until the lawyer approves the texts (finassist-app docs/legal/). -->
       <nav aria-label="Legal" class="footer-col">
         <h2 class="footer-h" data-i18n="footer.legal">Legal</h2>
@@ -388,7 +430,6 @@
         <a href="/legal/#advice" data-i18n="legal.advice">Not investment advice</a>
         <a href="/legal/#ai" data-i18n="legal.ai">AI notice</a>
         <a href="/legal/#complaints" data-i18n="legal.complaints">Complaints</a>
-        <a href="mailto:privacy@kontomate.com" data-i18n="footer.privacyContact">Privacy questions</a>
       </nav>
     </div>
     <div class="wrap footer-bottom">
@@ -397,7 +438,7 @@
     </div>
   </footer>
 
-  <script src="assets/i18n.js?v=eae147e542"></script>
-  <script src="assets/site.js?v=eae147e542"></script>
+  <script src="assets/i18n.js?v=3ab1132880"></script>
+  <script src="assets/site.js?v=3ab1132880"></script>
 </body>
 </html>

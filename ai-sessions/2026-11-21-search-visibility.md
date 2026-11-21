@@ -23,7 +23,14 @@ Typing "kontomate" in a browser or in Google didn't find kontomate.com. Google o
 - Category wording: wealth tracker, net worth and portfolio tracker, money management. Not "investing app".
 - No `offers` in the JSON-LD until sign-up opens.
 
+## Done by the owner on 21.11.2026
+- Google Search Console: Domain property verified, `https://kontomate.com/sitemap.xml` submitted (a Domain property needs the full URL), indexing requested; everything reported fine.
+- Bing Webmaster Tools: imported from GSC; sitemap Success (2 URLs); home page indexed; `/about/` "Discovered but not crawled" (normal for a new site, recheck in about a week). The "meta description too long" error was fixed (now 146/130 characters).
+- Cloudflare: Crawler Hints (IndexNow) on. AI Crawl Control: all AI crawlers allowed (OpenAI, Anthropic, Google, Perplexity, Common Crawl, Apple, DuckDuckGo, ByteDance, Microsoft, Amazon), 1.5k requests in 7 days. The ~500 "HTTP 302" responses are redirects, not blocks; most likely `app.kontomate.com` (Cloudflare Access login), plus www/http and clean-URL redirects.
+- Rich Results Test: Organization + Software App valid (optional `offers`/`aggregateRating` missing on purpose); validator.schema.org: WebSite + WebApplication, 0 errors; LinkedIn Post Inspector shows the share image.
+
 ## Open follow-ups — what the user / next session must do
-- Owner: Google Search Console and Bing Webmaster Tools (verify, sitemap, request indexing), Cloudflare Crawler Hints and AI Crawl Control, Rich Results Test (plan A1–A3).
-- Owner: create KontoMate profiles (LinkedIn showcase, Product Hunt at launch, AlternativeTo, Crunchbase) and add them to `sameAs`.
+- **After New Year 2027:** create KontoMate profiles (LinkedIn showcase page under HadesFlow, AlternativeTo, Crunchbase; Product Hunt at launch) and add their URLs to `sameAs` in the JSON-LD.
+- **hadesflow.com:** run the same checks for `https://hadesflow.com` (GSC domain property + sitemap + request indexing, Bing import + sitemap, Cloudflare Crawler Hints and AI Crawl Control if the zone is on Cloudflare, Rich Results Test, LinkedIn Post Inspector).
+- Recheck `/about/` in Bing in about a week.
 - Next: English content pages (plan B5), monthly brand and AI prompt checks (D1–D3).

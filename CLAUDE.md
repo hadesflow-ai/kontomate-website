@@ -12,7 +12,7 @@ Context for AI assistants working on this repo: the public landing page of Konto
 
 ## Internal files are public unless blocked
 
-Pages serves every file in the repo. `README.md`, `CLAUDE.md`, `ai-sessions/` and `scripts/` answer 404 because the middleware blocks them, and they are listed in `_routes.json` so the middleware runs for them. **A new internal file or folder must be added in both places.** Never commit secrets.
+Pages serves every file in the repo. HTML comments are stripped from served pages by the middleware (they stay in the source). `README.md`, `CLAUDE.md`, `ai-sessions/` and `scripts/` answer 404 because the middleware blocks them, and they are listed in `_routes.json` so the middleware runs for them. **A new internal file or folder must be added in both places.** Never commit secrets.
 
 ## Rules
 

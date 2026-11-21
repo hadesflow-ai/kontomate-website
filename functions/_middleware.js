@@ -1,4 +1,4 @@
-// Runs for the routes in _routes.json ("/", "/about/", "/api/*" and the internal files below) and does four things:
+// Runs for the routes in _routes.json ("/", "/about/", "/api/*" and the internal files below) and does five things:
 //
 // 1. Site mode. The HTML files say data-mode="soon" (waitlist, no sign-up or login), so the site is in Soon
 //    mode unless the Cloudflare Pages variable SITE_MODE is "live": then this rewrites the <html> attribute
@@ -15,6 +15,8 @@
 // 4. Internal files stay private. Cloudflare Pages serves the whole repo, so README.md, CLAUDE.md, ai-sessions/
 //    and scripts/ would be public; they answer with the 404 page instead. Add any new internal file here
 //    AND in _routes.json.
+//
+// 5. HTML comments are removed from every page that passes through here (they stay in the repo).
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'",
@@ -37,10 +39,11 @@ export async function onRequest({ request, env, next }) {
   }
   let response = await next();
   const isHtml = (response.headers.get("content-type") || "").includes("text/html");
-  if (env.SITE_MODE === "live" && isHtml) {
-    response = new HTMLRewriter()
-      .on("html", { element(el) { el.setAttribute("data-mode", "live"); } })
-      .transform(response);
+  if (isHtml) {
+    // HTML comments are notes for developers: they stay in the source and are removed from what visitors get.
+    const rewriter = new HTMLRewriter().onDocument({ comments(c) { c.remove(); } });
+    if (env.SITE_MODE === "live") rewriter.on("html", { element(el) { el.setAttribute("data-mode", "live"); } });
+    response = rewriter.transform(response);
   }
   response = new Response(response.body, response); // mutable headers
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {

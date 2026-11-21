@@ -129,6 +129,7 @@ KM_I18N.strings.ro = {
   "footer.tagline": "Urmărirea averii, doar citire. Fără reclame, fără urmărire.",
   "footer.advice": "KontoMate nu este o bancă, un broker sau un consilier de investiții. Nimic de pe acest site sau din aplicație nu constituie consultanță de investiții.",
   "footer.product": "Produs",
+  "footer.about": "Despre KontoMate",
   "footer.contact": "Contact",
   "footer.privacyContact": "Întrebări despre confidențialitate",
   "footer.legal": "Documente legale",

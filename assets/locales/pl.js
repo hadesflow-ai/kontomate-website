@@ -129,6 +129,7 @@ KM_I18N.strings.pl = {
   "footer.tagline": "Śledzenie majątku tylko do odczytu. Bez reklam, bez trackerów.",
   "footer.advice": "KontoMate nie jest bankiem, brokerem ani doradcą inwestycyjnym. Nic na tej stronie ani w aplikacji nie stanowi doradztwa inwestycyjnego.",
   "footer.product": "Produkt",
+  "footer.about": "O KontoMate",
   "footer.contact": "Kontakt",
   "footer.privacyContact": "Pytania o prywatność",
   "footer.legal": "Informacje prawne",

@@ -12,7 +12,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const PAGES = ["index.html", "legal/index.html", "404.html"];
+const PAGES = ["index.html", "legal/index.html", "about/index.html", "404.html"];
 
 const files = [];
 (function walk(dir) {

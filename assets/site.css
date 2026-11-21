@@ -429,7 +429,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media print { .reveal-ready [data-reveal] { opacity: 1; transform: none; } .site-header { position: static; } }
 
 /* Legal and 404 pages */
-.legal { padding: 56px 0 88px; max-width: 760px; }
+.legal { padding-block: 56px 88px; max-width: 760px; } /* padding-block keeps the .wrap side gutter */
 .legal h1 { font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.025em; }
 .legal section { padding: 28px 0; border-bottom: 1px solid var(--border); }
 .legal h2 { font-size: 1.25rem; }

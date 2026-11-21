@@ -1,4 +1,4 @@
-// Runs for the routes in _routes.json ("/" and "/api/*") and does two things:
+// Runs for the routes in _routes.json ("/", "/about/" and "/api/*") and does three things:
 //
 // 1. Site mode. The HTML files say data-mode="soon" (waitlist, no sign-up or login), so the site is in Soon
 //    mode unless the Cloudflare Pages variable SITE_MODE is "live": then this rewrites the <html> attribute
@@ -8,6 +8,9 @@
 //
 // 2. Security headers. Cloudflare does not promise to apply _headers to responses that pass through a
 //    Function, so the same headers are set here. KEEP THIS LIST IN STEP WITH _headers.
+//
+// 3. One address for search engines. The project's own *.pages.dev address serves the same site; it gets
+//    X-Robots-Tag: noindex so only kontomate.com is indexed (static files get the same rule from _headers).
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'",
@@ -18,7 +21,7 @@ const SECURITY_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
 };
 
-export async function onRequest({ env, next }) {
+export async function onRequest({ request, env, next }) {
   let response = await next();
   const isHtml = (response.headers.get("content-type") || "").includes("text/html");
   if (env.SITE_MODE === "live" && isHtml) {
@@ -30,5 +33,6 @@ export async function onRequest({ env, next }) {
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     if (!response.headers.has(name)) response.headers.set(name, value);
   }
+  if (new URL(request.url).hostname.endsWith(".pages.dev")) response.headers.set("X-Robots-Tag", "noindex");
   return response;
 }

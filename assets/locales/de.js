@@ -129,6 +129,7 @@ KM_I18N.strings.de = {
   "footer.tagline": "Vermögen im Blick, nur lesend. Ohne Werbung, ohne Tracker.",
   "footer.advice": "KontoMate ist keine Bank, kein Broker und kein Anlageberater. Nichts auf dieser Website oder in der App ist eine Anlageberatung.",
   "footer.product": "Produkt",
+  "footer.about": "Über KontoMate",
   "footer.contact": "Kontakt",
   "footer.privacyContact": "Fragen zum Datenschutz",
   "footer.legal": "Rechtliches",

@@ -10,3 +10,11 @@
 
 /assets/*
   Cache-Control: public, max-age=3600
+
+# The project's own pages.dev addresses serve the same site: keep them out of search results, so only
+# kontomate.com is indexed. (Pages that pass through the Function get the same header from _middleware.js.)
+https://kontomate-web.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:deployment.kontomate-web.pages.dev/*
+  X-Robots-Tag: noindex

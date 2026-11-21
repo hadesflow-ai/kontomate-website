@@ -8,7 +8,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const PAGES = ["index.html", "legal/index.html"];
+const PAGES = ["index.html", "legal/index.html", "about/index.html"];
 
 const english = {};
 for (const page of PAGES) {

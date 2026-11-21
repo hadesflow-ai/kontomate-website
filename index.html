@@ -8,15 +8,112 @@
   <title>KontoMate: the complete wealth app for everything you own</title>
   <meta name="description" content="KontoMate shows your bank accounts, brokers, crypto, gold and cash in one dashboard, with budgets, goals and an AI assistant. Read-only: it can never move your money." />
   <meta name="theme-color" content="#f5f5f2" />
-  <link rel="icon" href="assets/favicon.svg?v=3ab1132880" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="assets/favicon.svg?v=fb543aadde" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon-48.png?v=fb543aadde" type="image/png" sizes="48x48" />
+  <link rel="icon" href="assets/icon-192.png?v=fb543aadde" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=fb543aadde" />
   <link rel="canonical" href="https://kontomate.com/" />
   <meta property="og:title" content="KontoMate: the full picture of your money" />
   <meta property="og:description" content="Banks, brokers, crypto, gold and cash in one read-only dashboard, with budgets, goals and an AI assistant." />
   <meta property="og:url" content="https://kontomate.com/" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KontoMate" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://kontomate.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="KontoMate: the full picture of your money. A net worth card with a rising chart." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Structured data: who makes KontoMate and what it is. Keep in step with the legal notice (legal/#notice)
+       and the about page. Data, not a script: the CSP (script-src 'self') does not apply to it. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://hadesflow.com/#organization",
+        "name": "HadesFlow",
+        "legalName": "HadesFlow Ltd.",
+        "alternateName": "ХадесФлоу ЕООД",
+        "url": "https://hadesflow.com/",
+        "logo": "https://hadesflow.com/assets/cerberus-logo.png",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "Bulgarian UIC (ЕИК)",
+          "value": "208438230"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "7 Tsarnook St., Lozenets",
+          "postalCode": "1407",
+          "addressLocality": "Sofia",
+          "addressCountry": "BG"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/hadesflow/",
+          "https://www.facebook.com/people/HadesFlow/61579181364829/",
+          "https://www.instagram.com/hadesflow.ai/",
+          "https://www.tiktok.com/@hadesflow.ai"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://kontomate.com/#website",
+        "url": "https://kontomate.com/",
+        "name": "KontoMate",
+        "alternateName": [
+          "Kontomate",
+          "KontoMate app"
+        ],
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://hadesflow.com/#organization"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://kontomate.com/#app",
+        "name": "KontoMate",
+        "alternateName": "Kontomate",
+        "url": "https://kontomate.com/",
+        "applicationCategory": "FinanceApplication",
+        "applicationSubCategory": "Wealth tracker",
+        "operatingSystem": "Web browser",
+        "image": "https://kontomate.com/assets/og-image.png",
+        "description": "KontoMate is a read-only wealth tracker. It shows bank accounts, investments, crypto, gold and cash in one view, with budgets, goals and an AI assistant, and it can never move money.",
+        "featureList": [
+          "Bank statements imported as a file, PDF or photo (no bank login)",
+          "Read-only API keys for Trading 212, Interactive Brokers, eToro, Binance, Kraken, Coinbase and Bybit",
+          "Gold and silver by the gram, cash, home and car",
+          "Budget and income and expense plan, goals and recurring investments, detected subscriptions",
+          "Price and budget alerts and a monthly report",
+          "AI assistant that answers questions about your own numbers, never investment advice"
+        ],
+        "inLanguage": [
+          "en",
+          "bg",
+          "de",
+          "es",
+          "fr",
+          "it",
+          "pl",
+          "ro"
+        ],
+        "publisher": {
+          "@id": "https://hadesflow.com/#organization"
+        },
+        "creator": {
+          "@id": "https://hadesflow.com/#organization"
+        }
+      }
+    ]
+  }
+  </script>
   <!-- No trackers, no cookies, no third-party requests: everything below is served from this site. -->
-  <script src="assets/theme-init.js?v=3ab1132880"></script>
-  <link rel="stylesheet" href="assets/site.css?v=3ab1132880" />
+  <script src="assets/theme-init.js?v=fb543aadde"></script>
+  <link rel="stylesheet" href="assets/site.css?v=fb543aadde" />
 </head>
 <body>
   <!-- Lucide icons (ISC licence), drawn once and reused with <use>. -->
@@ -413,6 +510,7 @@
         <a href="https://demo.kontomate.com" data-i18n="cta.demo">Try the demo</a>
         <a class="live-only" href="https://app.kontomate.com/auth/login" data-i18n="nav.login">Log in</a>
         <a class="soon-only" href="#waitlist" data-i18n="cta.notifyShort">Get notified</a>
+        <a href="/about/" data-i18n="footer.about">About KontoMate</a>
       </nav>
       <div class="footer-col">
         <h2 class="footer-h" data-i18n="footer.contact">Contact</h2>
@@ -438,7 +536,7 @@
     </div>
   </footer>
 
-  <script src="assets/i18n.js?v=3ab1132880"></script>
-  <script src="assets/site.js?v=3ab1132880"></script>
+  <script src="assets/i18n.js?v=fb543aadde"></script>
+  <script src="assets/site.js?v=fb543aadde"></script>
 </body>
 </html>

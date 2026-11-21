@@ -9,18 +9,20 @@ The app itself lives in the `finassist-app` repository (app.kontomate.com); the 
 | Path | What |
 |---|---|
 | `index.html` | The page, in English (the source text). |
+| `about/index.html` | About KontoMate (English): what it is and is not, who makes it (HadesFlow Ltd.), status, contact. Indexable, in the sitemap. |
 | `legal/index.html` | The legal texts (English; derived from `finassist-app` `docs/legal/`, to be confirmed by the lawyer). |
 | `404.html` | Served by Cloudflare Pages for unknown paths. |
-| `assets/site.css` | Styles. Tokens match the app (`finassist-app` `src/index.css`): light `#f5f5f5` / white cards, dark `#181a20` / `#1e2329`, yellow `#fcd535` actions. |
+| `assets/site.css` | Styles. Tokens match the app (`finassist-app` `src/index.css`): light `#f5f5f2` paper / white cards, dark `#0f1115` / `#171a20`, yellow `#fcd535` actions. |
+| `assets/og-image.png`, `favicon.ico`, `assets/*.png` | Share image (1200×630) and PNG/ICO icons (the app's logo). |
 | `assets/theme-init.js` | Applies light/dark before first paint (external because the CSP forbids inline scripts). |
 | `assets/site.js` | Theme switch and language switcher. |
 | `assets/i18n.js` | Language list and `READY` (languages shown in the switcher). |
 | `assets/locales/<code>.js` | Translations for bg, de, es, fr, it, pl, ro (same languages as the app). |
 | `scripts/check-i18n.mjs` | Translation check. |
 | `scripts/stamp-assets.mjs` | Adds `?v=<hash>` to every `assets/` link, so changed CSS/JS reach visitors at once (Cloudflare caches `/assets/*` for hours). **Run it after every change in `assets/`**; `--check` fails if a page is stale. |
-| `functions/_middleware.js` | Soon / Live switch from the `SITE_MODE` variable (see below). |
+| `functions/_middleware.js` | Soon / Live switch from the `SITE_MODE` variable (see below); security headers; `X-Robots-Tag: noindex` on `*.pages.dev`. |
 | `functions/api/waitlist.js` | `POST /api/waitlist`: keeps an e-mail in Workers KV for the launch notice. |
-| `_routes.json` | Runs the Functions only for `/` and `/api/*`; everything else is plain static files. |
+| `_routes.json` | Runs the Functions only for `/`, `/about/` and `/api/*`; everything else is plain static files. |
 | `_headers`, `robots.txt`, `sitemap.xml` | Cloudflare Pages headers (CSP, security), crawler rules. |
 
 ## Soon and Live
@@ -88,6 +90,16 @@ English is the text in the HTML; every translatable element has a `data-i18n="ke
 3. Run `node scripts/check-i18n.mjs`; when a language shows all keys translated, add its code to `READY` in `assets/i18n.js`. The switcher appears as soon as two languages are ready. `?lang=bg` picks a language from a link.
 
 When the page grows, consider one pre-rendered page per language (`/bg/`, `/de/`…) for search engines; the keys stay the same.
+
+## Search and AI visibility
+
+The plan (21.11.2026) is the private artifact "KontoMate Search Plan". What lives in this repo:
+
+- **One address:** kontomate.com only. www and http redirect (Cloudflare); `kontomate-web.pages.dev` sends `X-Robots-Tag: noindex` (`_headers` for static files, the middleware for `/` and `/about/`).
+- **Structured data (JSON-LD)** in `index.html` and `about/index.html`: HadesFlow as the Organization (`@id` `https://hadesflow.com/#organization`), the KontoMate WebSite (alternate name "Kontomate") and WebApplication. Keep company facts in step with the legal notice. Add `offers` only when sign-up opens. JSON-LD is data, so the CSP doesn't block it.
+- **Share tags:** `og:image` is `assets/og-image.png` (absolute URL, not stamped); regenerate it if the slogan changes.
+- **Sitemap:** list every indexable page with `lastmod`. `/legal/` stays `noindex` until the lawyer approves the texts.
+- **Category words:** "wealth tracker", "net worth tracker", "portfolio tracker", "money management". Not "investing app", and "wealth management" only to say KontoMate is not a wealth manager.
 
 ## Rules for the copy
 

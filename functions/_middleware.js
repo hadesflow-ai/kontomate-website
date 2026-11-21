@@ -1,4 +1,4 @@
-// Runs for the routes in _routes.json ("/", "/about/" and "/api/*") and does three things:
+// Runs for the routes in _routes.json ("/", "/about/", "/api/*" and the internal files below) and does four things:
 //
 // 1. Site mode. The HTML files say data-mode="soon" (waitlist, no sign-up or login), so the site is in Soon
 //    mode unless the Cloudflare Pages variable SITE_MODE is "live": then this rewrites the <html> attribute
@@ -11,6 +11,10 @@
 //
 // 3. One address for search engines. The project's own *.pages.dev address serves the same site; it gets
 //    X-Robots-Tag: noindex so only kontomate.com is indexed (static files get the same rule from _headers).
+//
+// 4. Internal files stay private. Cloudflare Pages serves the whole repo, so README.md, CLAUDE.md, ai-sessions/
+//    and scripts/ would be public; they answer with the 404 page instead. Add any new internal file here
+//    AND in _routes.json.
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'",
@@ -21,7 +25,16 @@ const SECURITY_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
 };
 
+const INTERNAL = [/^\/(README|CLAUDE)\.md$/i, /^\/ai-sessions(\/|$)/i, /^\/scripts(\/|$)/i];
+
 export async function onRequest({ request, env, next }) {
+  const path = new URL(request.url).pathname;
+  if (INTERNAL.some((re) => re.test(path))) {
+    const page = await env.ASSETS.fetch(new URL("/404", request.url)); // Pages serves 404.html at /404
+    const headers = new Headers({ "content-type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" });
+    for (const [name, value] of Object.entries(SECURITY_HEADERS)) headers.set(name, value);
+    return new Response(page.body, { status: 404, headers });
+  }
   let response = await next();
   const isHtml = (response.headers.get("content-type") || "").includes("text/html");
   if (env.SITE_MODE === "live" && isHtml) {

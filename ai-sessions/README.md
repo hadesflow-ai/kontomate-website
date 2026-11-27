@@ -30,6 +30,7 @@ The folder is not public: the middleware answers 404 for `/ai-sessions/*` (see `
 
 | Date | Session | Summary |
 |---|---|---|
+| 2026-11-27 | [Import only, and why it's safe](2026-11-27-import-only-and-security.md) | No platform keys or names; "What KontoMate can reach" card and a new FAQ; real plan limits; legal aligned (Eden AI, Brevo for every e-mail, no broker connections); app docs/legal Google → Brevo |
 | 2026-11-21 | [Search and AI visibility basics](2026-11-21-search-visibility.md) | SEO/GEO/AEO audit (private artifact "KontoMate Search Plan"); About page, JSON-LD (HadesFlow + KontoMate), share image and icons, noindex on pages.dev, 404 for internal files, CLAUDE.md and ai-sessions; Bulgarian page postponed; hadesflow.com address fixed in its own repo |
 | 2026-11-16 | [Premium redesign](2026-11-16-premium-redesign.md) | "Quiet confidence" redesign with the ui-ux-pro-max skill: self-hosted IBM Plex, paper/ink/graphite tokens, vault band with key card, demo preview card, new pricing/FAQ/footer, scroll motion; same design applied to the app |
 | 2026-11-12 | Earlier work (no log) | Site built and hosted on Cloudflare Pages (Soon mode, waitlist in KV, 8 languages, legal texts, phone layout). See `../finassist-app/ai-sessions/2026-11-11-public-demo-and-landing.md` and git history |

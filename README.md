@@ -104,7 +104,7 @@ The plan (21.11.2026) is the private artifact "KontoMate Search Plan". What live
 ## Rules for the copy
 
 - KontoMate only reads. Never write anything suggesting it pays, transfers, buys, sells or invests.
-- No bank connections (no PSD2 / open banking): bank accounts come in by importing statements (file, PDF or photo). Brokers and exchanges connect with read-only keys.
+- No bank connections (no PSD2 / open banking): bank accounts come in by importing statements (file, PDF or photo). Brokers and exchanges are imported the same way (statements, exports, screenshots): no logins, no API keys, no connection to any other app (owner decision 27.11.2026).
 - Say "wealth app" or "wealth tracker", not "wealth management": KontoMate is not a regulated adviser or manager.
 - Not investment advice: describe facts and features, never recommend assets.
 - Prices and plan contents must match the app (`finassist-app` `api.plan_limits()` and Settings → Plan). Payments are not open yet.

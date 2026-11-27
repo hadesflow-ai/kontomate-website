@@ -306,7 +306,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .promise-list .icon { color: var(--vault-muted); margin-top: 3px; }
 .promise-list strong { font-weight: 600; }
 .promise-list p { color: var(--vault-muted); margin-top: 4px; font-size: 0.9375rem; }
-/* The key: what a connected key may do. */
+/* What KontoMate can reach: only the files you import. */
 .keycard { margin-top: 36px; max-width: 420px; background: var(--vault-card); border: 1px solid var(--vault-line); border-radius: var(--radius); padding: 20px 22px; }
 .keycard-head { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px dashed var(--vault-line); color: var(--vault-muted); }
 .keycard-head .icon { color: var(--primary); width: 20px; height: 20px; }

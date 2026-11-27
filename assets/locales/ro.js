@@ -147,7 +147,7 @@ KM_I18N.strings.ro = {
   "legal.ai": "Informare privind AI",
   "legal.complaints": "Reclamații",
   "legal.waitlist": "Lista de așteptare",
-  "legal.subprocessors": "Destinatari și sub-persoane împuternicite",
+  "legal.subprocessors": "Unde sunt datele tale",
   "legal.acceptableUse": "Utilizare acceptabilă",
   "legal.back": "Înapoi la pagina principală",
   "legal.title": "Documente legale",

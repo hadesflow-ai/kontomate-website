@@ -38,11 +38,24 @@ The site still promised read-only API keys and named the platforms. The owner wa
 - **Other files:** `README.md` copy rule, `sitemap.xml` lastmod, and the `site.css` comment. Assets were stamped and `check-i18n` passes (8 × 151).
 - **App repo (`finassist-app` `docs/legal`):** Google Workspace replaced by Brevo in the subprocessors, privacy, brief and records of processing.
 
+## Second round: "Where your data is" (owner decision: a short list by category)
+- `legal/` section `#subprocessors` (id kept for old links) is now **"Where your data is"**, by category instead of by company:
+  - app data on our servers in Germany (EU);
+  - AI features through an AI gateway to Claude by Anthropic (USA);
+  - voice through a speech-to-text provider (USA), only if used;
+  - e-mail through a provider in France (EU);
+  - website delivery, protection and the waitlist with Cloudflare (USA);
+  - payments: named before paid plans open.
+- The full named list is "available on request at privacy@kontomate.com"; it lives in the app repo's `docs/legal/05-subprocessors.md`. GDPR Art. 13(1)(e) allows "recipients or categories of recipients".
+- Aligned: "Who receives data", "Transfers outside the EU" (by category, app data stays in the EU), the waitlist "Where", the legal notice "Hosting" and the AI notice (no gateway named). Eden AI, Brevo and OpenAI are no longer named, so the text is true before and after the Eden AI switch.
+- Heading key `legal.subprocessors` translated in the 7 locales; assets restamped; `check-i18n` passes.
+- **Effect on the plan:** the website `dev` → `main` merge no longer waits for the Eden AI switch.
+
 ## Checked
 - Local server (`.claude/launch.json` "website" in the app repo), English and Bulgarian, 1280 px and 375 px: no overflow.
 - The "can reach" card and the FAQ show in both languages.
 
 ## Follow-ups
-- Eden AI switch and its data processing agreement (app TODO L4) before the legal page goes public. Accept Brevo's data processing agreement in the Brevo account.
+- Eden AI switch and its data processing agreement (app TODO L4): still planned, but the legal page no longer depends on it. Accept Brevo's data processing agreement in the Brevo account.
 - Lawyer review of the legal texts (app TODO L5); `/legal/` stays noindex until then.
 - Use "wealth tracker", not "wealth management", in the copy (README rule): KontoMate isn't a regulated manager.

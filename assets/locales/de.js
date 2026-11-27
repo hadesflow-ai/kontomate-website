@@ -147,7 +147,7 @@ KM_I18N.strings.de = {
   "legal.ai": "KI-Hinweis",
   "legal.complaints": "Beschwerden",
   "legal.waitlist": "Warteliste",
-  "legal.subprocessors": "Empfänger und Auftragsverarbeiter",
+  "legal.subprocessors": "Wo deine Daten liegen",
   "legal.acceptableUse": "Zulässige Nutzung",
   "legal.back": "Zurück zur Startseite",
   "legal.title": "Rechtliches",

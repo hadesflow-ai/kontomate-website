@@ -147,7 +147,7 @@ KM_I18N.strings.es = {
   "legal.ai": "Aviso sobre la IA",
   "legal.complaints": "Reclamaciones",
   "legal.waitlist": "Lista de espera",
-  "legal.subprocessors": "Destinatarios y encargados del tratamiento",
+  "legal.subprocessors": "Dónde están tus datos",
   "legal.acceptableUse": "Uso aceptable",
   "legal.back": "Volver al inicio",
   "legal.title": "Legal",

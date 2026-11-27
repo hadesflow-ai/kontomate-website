@@ -147,7 +147,7 @@ KM_I18N.strings.pl = {
   "legal.ai": "Informacja o AI",
   "legal.complaints": "Reklamacje",
   "legal.waitlist": "Lista oczekujących",
-  "legal.subprocessors": "Odbiorcy i podmioty przetwarzające",
+  "legal.subprocessors": "Gdzie są twoje dane",
   "legal.acceptableUse": "Zasady dozwolonego korzystania",
   "legal.back": "Wróć na stronę główną",
   "legal.title": "Informacje prawne",

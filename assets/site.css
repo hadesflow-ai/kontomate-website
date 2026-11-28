@@ -345,7 +345,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .section-center h2, .section-center .section-lead { margin-left: auto; margin-right: auto; }
 .section-center .plan { text-align: left; }
 .plans { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 48px auto 0; max-width: 900px; }
-@media (min-width: 768px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; align-items: stretch; } .plan { display: grid; grid-template-rows: subgrid; grid-row: span 5; } }
 .plan { display: flex; flex-direction: column; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; box-shadow: var(--shadow-card); }
 .plan-pro { border-color: color-mix(in srgb, var(--primary) 70%, var(--border)); box-shadow: var(--shadow-hero); }
 .plan-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -359,6 +358,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .features .yes { color: var(--success); }
 .features .no { color: var(--muted); }
 .plan .btn { align-self: end; width: 100%; }
+/* After the base .plan rule, or its display: flex wins and the cards stop sharing rows. */
+@media (min-width: 768px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; align-items: stretch; } .plan { display: grid; grid-template-rows: subgrid; grid-row: span 5; } }
 .note { display: inline-block; margin-top: 28px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 0.875rem; }
 @media (max-width: 767px) { .plan-pro { order: -1; } }
 
